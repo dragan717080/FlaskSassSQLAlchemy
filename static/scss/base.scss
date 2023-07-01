@@ -1,4 +1,7 @@
-h1 {
-  color: orangered;
-  font-size: 400%;
+@import 'includes';
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
