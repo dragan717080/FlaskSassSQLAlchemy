@@ -11,11 +11,11 @@ class BaseModel(db.Model):
     def remove_excluded_keys(item):
         return {var: value for var, value in vars(item).items() if var not in BaseModel.excluded_keys}
 
-    @staticmethod
+    @classmethod
     def find_all(cls):
         return [cls.remove_excluded_keys(item) for item in cls.query.all()]
 
-    @staticmethod
+    @classmethod
     def find_by_id(cls, id):
         return cls.query.filter(cls.id == id).first()
 
@@ -23,12 +23,12 @@ class BaseModel(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    @staticmethod
+    @classmethod
     def delete_one(cls, **kwargs):
         cls.query.filter_by(**kwargs).delete()
         db.session.commit()
 
-    @staticmethod
+    @classmethod
     def delete_all(cls):
         db.session.query(cls).delete()
         db.session.commit()
