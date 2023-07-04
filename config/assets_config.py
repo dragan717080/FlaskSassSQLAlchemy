@@ -17,11 +17,9 @@ def create_bundle(input_file, output_file=None):
 def configure_assets(app):
     assets = Environment(app)
 
-    css = create_bundle('base')
-    index_css = create_bundle('index')
+    bundle_names = ['base_css', 'index_css']
+    bundles = {name: create_bundle(name.split('_')[0]) for name in bundle_names}
 
-    assets.register('asset_css', css)
-    assets.register('index_css', index_css)
-
-    css.build()
-    index_css.build()
+    for bundle_name, bundle_obj in bundles.items():
+        assets.register(bundle_name, bundle_obj)
+        bundle_obj.build()

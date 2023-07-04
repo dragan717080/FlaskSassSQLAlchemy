@@ -9,8 +9,8 @@
     <link rel='shortcut icon' href="{{ url_for('static', filename='/images/logoicon.png') }}" type='image/x-icon'>
     <link href='https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap' rel='stylesheet'>
 
-    {% assets "asset_css" %}
-    <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"/>
+    {% assets 'base_css' %}
+    <link rel='stylesheet' type='text/css' href="{{ ASSET_URL }}"/>
     {% endassets %}
     
     {% block head %}
@@ -18,9 +18,8 @@
     {% endblock %}
 </head>
 <body>
+{% block body %}
 
-    {% block body %}
-
-    {% endblock %}
+{% endblock %}
 </body>
 </html>
